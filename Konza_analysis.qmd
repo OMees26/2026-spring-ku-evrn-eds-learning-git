@@ -43,7 +43,12 @@ This analysis showed that Poaceae and Asteraceae are among the most common famil
 ```{r}
 #| label: mean-pcnt-cover-by-family
 
-# the goal is to calculate the mean percent cover by family
+# the goal is to calculate the mean percent cover of each family
+konza_data %>% 
+  group_by(family) %>% 
+  summarise(mean_pcnt_cover = mean(percentCover), 
+            sd_pcnt_cover = sd(percentCover)) %>% 
+  arrange(desc(mean_pcnt_cover))
 ```
 
 
