@@ -96,12 +96,28 @@ labs(title = "Cover of Asteraceae by Elevation",
      x = "Elevation")
 scale_color_viridis_c()
 ```
-
-
-
 ## Next steps 
 
 Need to demonstrate the use of the `mutate()` function, and then how to use `ggplot2`. Some interesting plots could be looking at the effects of elevation on plant cover
 
+## Next steps(homework)
 
+Need to create three figures to better understand `ggplot` and `dplyr` applications
+
+```{r}
+#| label: taxon_id_by_elevation
+
+konza_data %>% 
+  filter(!is.na(taxonID)) %>% 
+  filter(taxonID == "CODR") %>%
+ggplot() +
+  geom_boxplot(aes(x = elevation,
+                   y = percentCover,
+                   group = elevation)) +
+labs(title = "Cover of taxonID by Elevation",
+     y = "Percent Cover",
+     x = "Elevation")
+```
+
+### End homework
 
