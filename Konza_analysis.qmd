@@ -32,7 +32,7 @@ konza_data <- read_csv("data/NEON.D06.KONZ.DP1.10058.001.div_1m2Data.2025-08.bas
 
 ## Data summarizing with `dplyr` 
 
-We'll next use the dplyr package to summarize some diffeent aspects of the data. 
+We'll next use the dplyr package to summarize some different aspects of the data. 
 
 ```{r}
 #| label: summarize-with-dplyr
@@ -154,6 +154,20 @@ konza_data %>%
 This bar graph could be used to determine the most common variables that impact NEON studies. This data could be helpful when training new technicians as it could teach them what to expect in the field. 
 
 
+The goal is to make a boxplot showing the variation in elevation by family. 
+
+```{r}
+#| label: family_boxplot
+konza_data %>% 
+  filter(!is.na(family), !is.na(elevation)) %>% 
+  ggplot(aes(x = elevation, y = family)) +
+  geom_boxplot() + 
+  labs(title = "Elevation by Family",
+       x = "Elevation",
+       y = "Family")
+```
+
+This plot shows the variation in elevation that different plant families are found at. It could be used to develop a guide of where certain families of plants could be found. 
 
 ### End homework
 
