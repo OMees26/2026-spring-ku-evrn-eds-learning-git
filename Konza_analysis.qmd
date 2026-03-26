@@ -136,16 +136,22 @@ labs(title = "Cover of taxonID by Elevation",
      x = "Elevation")
 ```
 
-The boxplot shows that higher elevations tend to cause less variation in percent cover. An area to look into further could be the eleveation of 350 as it has a significantly higher percent cover of taxa. 
+The boxplot shows that higher elevations tend to cause less variation in percent cover. An area to look into further could be the elevation of 350 as it has a significantly higher percent cover of taxa. 
+
+The goal of this plot is to create a bar graph of the most common variables that impacted the study. 
 
 ```{r}
-#| label: elevation_histogram
-
-
-
-
+#| label: other_variable_bar_graph
+konza_data %>%
+  filter(!is.na(otherVariables)) %>% 
+  ggplot(aes(x = otherVariables)) +
+  geom_bar() +
+  labs(title = "Bar graph of other variables frequency",
+       x = "variables" ) 
 
 ```
+
+This bar graph could be used to determine the most common variables that impact NEON studies. This data could be helpful when training new technicians as it could teach them what to expect in the field. 
 
 
 
